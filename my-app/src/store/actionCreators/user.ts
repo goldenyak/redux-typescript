@@ -8,7 +8,10 @@ export const fetchUsers = () => {
         try {
             dispatch({type: UserActionType.FETCH_USERS})
             const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-            dispatch({type: UserActionType.FETCH_USERS_SUCCESS, payload: response.data})
+            setTimeout(() => {
+                dispatch({type: UserActionType.FETCH_USERS_SUCCESS, payload: response.data})
+            }, 1000)
+
         }
         catch (e) {
             dispatch({type: UserActionType.FETCH_USERS_ERROR, payload: "Произошла ошибка при загрузке пользователей"})
